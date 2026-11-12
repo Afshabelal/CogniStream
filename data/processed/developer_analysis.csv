@@ -1,0 +1,6 @@
+developer_id,total_sessions,avg_coding_hours,avg_focus_score,avg_workload_score,avg_productivity_score
+DEV001,109,4.07,60.33,67.89,48.76
+DEV002,95,4.63,64.59,70.31,53.22
+DEV003,91,4.08,65.91,65.07,50.87
+DEV004,112,4.62,62.47,68.39,52.21
+DEV005,93,4.76,60.65,70.11,51.51
