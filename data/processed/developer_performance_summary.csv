@@ -1,0 +1,6 @@
+developer_id,total_sessions,average_productivity,average_focus,average_workload,total_coding_hours,high_flow_sessions,high_flow_percentage
+DEV002,95,53.22,64.59,70.31,439.5,32,33.68
+DEV004,112,52.21,62.47,68.39,516.96,25,22.32
+DEV005,93,51.51,60.65,70.11,442.38,18,19.35
+DEV003,91,50.87,65.91,65.07,370.83,27,29.67
+DEV001,109,48.76,60.33,67.89,443.17,21,19.27
