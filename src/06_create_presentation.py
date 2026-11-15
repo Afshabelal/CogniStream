@@ -344,6 +344,75 @@ for i, item in enumerate(paragraphs):
 
 
 # ---------------------------------
+# Slide 11: Cognitive Load Risk Analysis
+# ---------------------------------
+slide = new_slide(
+    "Cognitive Load Risk Analysis",
+    "Rule-based assessment of developer cognitive load"
+)
+
+# Risk distribution
+risk_data = [
+    ("Low Risk", "65", RGBColor(32, 166, 122)),
+    ("Medium Risk", "311", RGBColor(232, 155, 69)),
+    ("High Risk", "124", RGBColor(217, 83, 79))
+]
+
+for i, (label, value, color) in enumerate(risk_data):
+    x = 0.8 + (i * 4.15)
+
+    shape = slide.shapes.add_shape(
+        MSO_SHAPE.ROUNDED_RECTANGLE,
+        Inches(x), Inches(2.0),
+        Inches(3.6), Inches(1.5)
+    )
+    shape.fill.solid()
+    shape.fill.fore_color.rgb = WHITE
+    shape.line.color.rgb = color
+
+    box = slide.shapes.add_textbox(
+        Inches(x + 0.1), Inches(2.25),
+        Inches(3.4), Inches(0.4)
+    )
+    p = box.text_frame.paragraphs[0]
+    p.text = label
+    p.font.size = Pt(19)
+    p.font.bold = True
+    p.font.color.rgb = color
+    p.alignment = PP_ALIGN.CENTER
+
+    box = slide.shapes.add_textbox(
+        Inches(x + 0.1), Inches(2.75),
+        Inches(3.4), Inches(0.5)
+    )
+    p = box.text_frame.paragraphs[0]
+    p.text = value
+    p.font.size = Pt(25)
+    p.font.bold = True
+    p.font.color.rgb = BLUE
+    p.alignment = PP_ALIGN.CENTER
+
+# Average score
+box = slide.shapes.add_textbox(
+    Inches(1.0), Inches(4.0),
+    Inches(11.3), Inches(0.6)
+)
+p = box.text_frame.paragraphs[0]
+p.text = "Average Cognitive Load Risk Score: 52.70"
+p.font.size = Pt(23)
+p.font.bold = True
+p.font.color.rgb = TEAL
+p.alignment = PP_ALIGN.CENTER
+
+add_bullets(slide, [
+    "Risk score combines workload, low focus, interruptions and task switching.",
+    "The analysis covers 500 developer activity sessions.",
+    "This is an exploratory rule-based indicator, not a clinical diagnosis."
+], x=1.0, y=4.8, width=11.3)
+
+
+
+# ---------------------------------
 # Save Presentation
 # ---------------------------------
 prs.save(OUTPUT_FILE)

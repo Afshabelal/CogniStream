@@ -78,7 +78,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATA_PATH = (
     BASE_DIR / "data" / "processed"
-    / "cognistream_cleaned_data.csv"
+    / "cognitive_load_risk_analysis.csv"
 )
 
 # ---------------------------------
@@ -324,6 +324,72 @@ with st.container(border=True):
     )
 
 st.markdown("---")
+
+# ---------------------------------
+# Cognitive Load Risk Analysis
+# ---------------------------------
+st.markdown("---")
+
+st.subheader("🧠 Cognitive Load Risk Analysis")
+
+# Risk distribution
+risk_counts = (
+    filtered_df["cognitive_load_risk"]
+    .value_counts()
+    .reindex(
+        ["Low Risk", "Medium Risk", "High Risk"],
+        fill_value=0
+    )
+    .reset_index()
+)
+
+risk_counts.columns = ["Risk Category", "Sessions"]
+
+risk_col1, risk_col2 = st.columns(2)
+
+with risk_col1:
+    st.metric(
+        "Average Cognitive Load Risk",
+        f"{filtered_df['cognitive_load_risk_score'].mean():.2f}"
+    )
+
+    st.metric(
+        "High Risk Sessions",
+        int(
+            (filtered_df["cognitive_load_risk"] == "High Risk").sum()
+        )
+    )
+
+with risk_col2:
+    fig_risk = px.bar(
+        risk_counts,
+        x="Risk Category",
+        y="Sessions",
+        color="Risk Category",
+        title="Cognitive Load Risk Distribution",
+        text="Sessions",
+        category_orders={
+            "Risk Category": [
+                "Low Risk",
+                "Medium Risk",
+                "High Risk"
+            ]
+        },
+        color_discrete_map={
+            "Low Risk": "#20A67A",
+            "Medium Risk": "#E89B45",
+            "High Risk": "#D9534F"
+        }
+    )
+
+    fig_risk.update_layout(**chart_config)
+
+    with st.container(border=True):
+        st.plotly_chart(
+            fig_risk,
+            width="stretch",
+            key="cognitive_risk_chart"
+        )
 
 # ---------------------------------
 # Developer Data

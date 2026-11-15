@@ -117,3 +117,40 @@ These findings are exploratory and do not establish causation.
 - Explore machine learning models.
 - Improve dashboard functionality.
 - Develop personalized productivity insights.
+
+## 11. Cognitive Load Risk Analysis
+
+### Overview
+A rule-based Cognitive Load Risk Analysis feature was developed to identify developer work sessions with different levels of cognitive load. The analysis uses workload score, focus score, interruption count, and task-switching activity.
+
+### Methodology
+A Cognitive Load Risk Score was calculated using the following weighted components:
+
+- Workload Risk: 35%
+- Low Focus Risk: 30%
+- Interruption Risk: 20%
+- Task Switching Risk: 15%
+
+Each session was classified into one of three categories:
+
+- Low Risk: Score below 35
+- Medium Risk: Score from 35 to below 65
+- High Risk: Score of 65 or above
+
+### Results
+The analysis covered all 500 developer activity sessions.
+
+| Risk Category | Sessions |
+|---|---:|
+| Low Risk | 65 |
+| Medium Risk | 311 |
+| High Risk | 124 |
+
+The average Cognitive Load Risk Score was **52.70**.
+
+### Dashboard Integration
+The new analysis was integrated into the interactive Streamlit dashboard. It displays the average cognitive load risk score, number of high-risk sessions, and a bar chart showing the distribution of Low, Medium, and High Risk sessions.
+
+### Conclusion and Limitation
+This feature provides an exploratory, rule-based indicator of cognitive workload patterns. It can help highlight sessions that may need further attention. The scores are analytical estimates based on the selected rules and are not clinical or psychological diagnoses.
+
