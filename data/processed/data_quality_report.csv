@@ -1,0 +1,13 @@
+check,status,issue_count
+Column exists: developer_id,PASS,0
+Column exists: date,PASS,0
+Column exists: coding_hours,PASS,0
+Column exists: focus_score,PASS,0
+Column exists: workload_score,PASS,0
+Column exists: productivity_score,PASS,0
+Column exists: flow_state,PASS,0
+Missing values,PASS,0
+Duplicate records,PASS,0
+Valid range: focus_score (0-100),PASS,0
+Valid range: workload_score (0-100),PASS,0
+Valid range: productivity_score (0-100),PASS,0
